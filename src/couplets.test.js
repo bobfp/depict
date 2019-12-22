@@ -32,6 +32,17 @@ describe("number", () => {
   });
 });
 
+describe("int", () => {
+  test("simple", () => {
+    const simple = depict("simpleInt", C.isInt);
+    testN(simple);
+  });
+  test("int with range", () => {
+    const num = depict("intInRange", C.isInt.with({ max: 29483, min: -32298 }));
+    testN(num);
+  });
+});
+
 describe("string", () => {
   test("simple", () => {
     const s = depict("simpleString", C.isString);
@@ -52,5 +63,19 @@ describe("object", () => {
     const age = depict("age", C.isNumber);
     const o = depict("user", C.isObject({ name, age }));
     testN(o);
+  });
+});
+
+fdescribe("and", () => {
+  test("simple", () => {
+    const a = depict(
+      "even",
+      C.and([
+        C.isNumber.with({ min: -100, max: 100 }),
+        val => val % 2 === 0,
+        val => val % 6 === 0
+      ])
+    );
+    testN(a, 1);
   });
 });

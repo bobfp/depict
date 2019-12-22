@@ -10,6 +10,16 @@ export const isNumber = (
   return false;
 };
 
+export const isInt = (
+  val,
+  { max = Number.MAX_SAFE_INTEGER, min = Number.MIN_SAFE_INTEGER } = {}
+) => {
+  if (Number.isInteger(val)) {
+    return val <= max && val >= min && val;
+  }
+  return false;
+};
+
 export const isString = (val, { maxLength = 250, minLength = 0 } = {}) => {
   if (Object.prototype.toString.call(val) === "[object String]") {
     return val.length <= maxLength && val.length >= minLength;
