@@ -1,0 +1,16 @@
+{
+  "name": "depict",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "bob <bcoop713@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1"
+  }
+}
