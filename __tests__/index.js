@@ -148,6 +148,37 @@ describe("req", () => {
       ]
     });
   });
+  test("simple fail", () => {
+    const user = depict("user", object({ name: string, human: boolean }));
+    const strictUser = req(["name", "human", "xp"], user);
+    const bob = { name: "bob", human: true };
+    expect(execute(strictUser, bob)).toEqual({
+      conformedValue: bob,
+      validations: [
+        {
+          dPath: ["req", "user", "string"],
+          success: true,
+          vPath: ["name"],
+          validator: "string",
+          value: "bob"
+        },
+        {
+          dPath: ["req", "user", "boolean"],
+          success: true,
+          vPath: ["human"],
+          validator: "boolean",
+          value: true
+        },
+        {
+          dPath: ["req"],
+          success: false,
+          vPath: ["xp"],
+          validator: "req",
+          value: bob
+        }
+      ]
+    });
+  });
 });
 
 /*
