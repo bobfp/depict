@@ -1,6 +1,16 @@
 {
   "name": "depict",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-root-import": "^6.6.0",
     "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "seedrandom": "^3.0.5"
   }
 }
